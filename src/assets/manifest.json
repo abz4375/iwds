@@ -1,0 +1,42 @@
+{
+    "name": "Integrated Wireless Detection System",
+    "short_name": "IWDS",
+    "start_url": "/",
+    "scope" : "/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#fff",
+    "prefer_related_applications": true,
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "3d-modeling128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "3d-modeling256.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "3d-modeling256.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "3d-modeling512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

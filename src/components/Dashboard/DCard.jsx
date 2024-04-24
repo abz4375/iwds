@@ -108,17 +108,17 @@ export default function DCard(props) {
       <Box>
         <Card
           className="DCard"
+          sx={{
+            width : "91.5vw",
+            margin : "1em",
+            border : "3px solid rgba( 0, 0, 0, 0.68 )",
+            borderRadius : "5px",
+            background : "rgba( 255, 255, 255, 0.9 )",
+            boxShadow : "0 3px 3px 0 rgba( 31, 38, 135, 0.2 )",
+            backdropFilter : "blur ( 4px )",
+            WebkitBackdropFilter : "blur ( 4px )",
+          }}
           variant="outlined"
-          // sx={{
-          //   width: { xs: "91.5vw", sm: "91.5vw" },
-          //   margin: "1em",
-          //   border: "3px solid rgba( 0, 0, 0, 0.68 )",
-          //   borderRadius: "5px",
-          //   background: "rgba( 255, 255, 255, 0.9 )",
-          //   boxShadow: "0 3px 3px 0 rgba( 31, 38, 135, 0.2 )",
-          //   backdropFilter: "blur ( 4px )",
-          //   WebkitBackdropFilter: "blur ( 4px )",
-          // }}
         >
           {card(props)}
         </Card>
