@@ -1,0 +1,12 @@
+.scrollToTop{
+    backdrop-filter:blur(1px);
+    -webkit-backdrop-filter:blur(1px);
+}
+
+.logoutBtn{
+    backdrop-filter: blur(0px);
+    /* background: rgba( 255, 204, 203, 1 ); */
+    background: rgba(180, 0, 0, 0.70);
+    box-shadow: 0px 0px 2px black;
+    border-radius: 4px;
+}

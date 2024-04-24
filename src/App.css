@@ -1,0 +1,8 @@
+html {
+    background-color: #e3fbfc;
+    background-image: url('/src/assets/back.jpg');
+    background-position: bottom;
+    background-position-y: 80%;
+    background-attachment: fixed;
+}
+
