@@ -25,6 +25,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import './TopBar.css';
+import { Link } from "react-router-dom";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -179,8 +180,8 @@ export default function TopBar(props) {
               }}
             >
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "white", fontWeight: "bold" }}>
-                  {item}
+                <Button key={item} >
+                  <Link to="/login" style={{textDecoration:"none", color: "white", fontWeight: "bold"}}>{item}</Link>
                 </Button>
               ))}
             </Box>
