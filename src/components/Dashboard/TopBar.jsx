@@ -24,8 +24,18 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import './TopBar.css';
+import "./TopBar.css";
 import { Link } from "react-router-dom";
+
+import { styled } from "@mui/material/styles";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+
+// import firebase from "firebase/app";
+// import "firebase/database";
+import db from "../../config/firebase";
+import { ref, set } from "firebase/database";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -101,7 +111,47 @@ ScrollTop.propTypes = {
 };
 
 export default function TopBar(props) {
-  const settings = [props.name, props.email];
+  const settings = [
+    props.name,
+    props.email,
+    <Box
+      className="logoutBtn"
+      sx={{
+        display: { xs: "flex", sm: "flex" },
+
+        // border: 1.5,
+        // borderColor: "rgb(200, 204, 203)",
+        borderColor: "transparent",
+        // boxShadow: "0px 0px 1px black",
+        // borderRadius: "4px",
+        // background: "rgba( 255, 204, 203, 0.75 )",
+        // backdropFilter: "blur ( 4px )",
+        // WebkitBackdropFilter: "blur ( 4px )",
+      }}
+    >
+      {navItems.map((item) => (
+        <Link
+          key={item}
+          to="/login"
+          style={{
+            margin: "auto",
+          }}
+        >
+          <Button
+            key={item}
+            style={{
+              width: "173px",
+              textDecoration: "none",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            {item}
+          </Button>
+        </Link>
+      ))}
+    </Box>,
+  ];
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -120,13 +170,85 @@ export default function TopBar(props) {
     setAnchorElUser(null);
   };
 
+  const IOSSwitch = styled((props) => (
+    <Switch
+      focusVisibleClassName=".Mui-focusVisible"
+      disableRipple
+      {...props}
+    />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    "& .MuiSwitch-switchBase": {
+      padding: 0,
+      margin: 2,
+      transitionDuration: "300ms",
+      "&.Mui-checked": {
+        transform: "translateX(16px)",
+        color: "#fff",
+        "& + .MuiSwitch-track": {
+          backgroundColor:
+            theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
+          opacity: 1,
+          border: 0,
+        },
+        "&.Mui-disabled + .MuiSwitch-track": {
+          opacity: 0.5,
+        },
+      },
+      "&.Mui-focusVisible .MuiSwitch-thumb": {
+        color: "#33cf4d",
+        border: "6px solid #fff",
+      },
+      "&.Mui-disabled .MuiSwitch-thumb": {
+        color:
+          theme.palette.mode === "light"
+            ? theme.palette.grey[100]
+            : theme.palette.grey[600],
+      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+      },
+    },
+    "& .MuiSwitch-thumb": {
+      boxSizing: "border-box",
+      width: 22,
+      height: 22,
+    },
+    "& .MuiSwitch-track": {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
+      opacity: 1,
+      transition: theme.transitions.create(["background-color"], {
+        duration: 500,
+      }),
+    },
+  }));
+
+  const [isChecked, setIsChecked] = useState(true);
+
+  const handleToggle = async (event) => {
+    setIsChecked(!isChecked);
+    updateDatabaseRules(isChecked);
+  };
+
+  const updateDatabaseRules = (enabled) => {
+    // const databaseRef = ref(db,'/.settings/rules');
+    if (enabled) {
+      props.onChange(enabled);
+    } else {
+      props.onChange(enabled);
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar
           sx={{
-            background: "rgba( 255, 255, 255, 0.65 )",
+            background: "rgba( 255, 255, 255, 0.64 )",
             // boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
             backdropFilter: "blur( 14px )",
             WebkitBackdropFilter: "blur ( 14px )",
@@ -165,26 +287,21 @@ export default function TopBar(props) {
               IWDS
             </Typography>
             <Box sx={{ flexGrow: 1, display: "flex" }} />
-            <Box className="logoutBtn"
-              sx={{
-                display: { xs: "flex", sm: "flex" },
-                marginRight: "2em",
-                border: 1.5,
-                // borderColor: "rgb(200, 204, 203)",
-                borderColor: "maroon",
-                // boxShadow: "0px 0px 1px black",
-                // borderRadius: "4px",
-                // background: "rgba( 255, 204, 203, 0.75 )",
-                // backdropFilter: "blur ( 4px )",
-                // WebkitBackdropFilter: "blur ( 4px )",
-              }}
-            >
-              {navItems.map((item) => (
-                <Button key={item} >
-                  <Link to="/login" style={{textDecoration:"none", color: "white", fontWeight: "bold"}}>{item}</Link>
-                </Button>
-              ))}
-            </Box>
+            <React.Fragment>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <IOSSwitch
+                      sx={{ m: 1, transitionDuration: "300ms" }}
+                      checked={isChecked}
+                      onChange={handleToggle}
+                    />
+                  }
+                  label="Sync"
+                  style={{ color: "black" }}
+                />
+              </FormGroup>
+            </React.Fragment>
             <Divider />
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
@@ -220,8 +337,12 @@ export default function TopBar(props) {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem
+                    className="menuItem"
+                    key={setting}
+                    onClick={handleCloseUserMenu}
+                  >
+                    <div style={{ margin: "auto" }}>{setting}</div>
                   </MenuItem>
                 ))}
               </Menu>
@@ -230,7 +351,11 @@ export default function TopBar(props) {
         </AppBar>
       </ElevationScroll>
       <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top" className="scrollToTop">
+        <Fab
+          size="small"
+          aria-label="scroll back to top"
+          className="scrollToTop"
+        >
           <KeyboardArrowUpIcon
             sx={{
               color: "red",

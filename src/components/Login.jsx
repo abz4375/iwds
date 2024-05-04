@@ -1,5 +1,4 @@
 import "./Login.css";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -18,7 +17,35 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ChevronRightTwoToneIcon from "@mui/icons-material/ChevronRightTwoTone";
 
+import React, { useState } from "react";
+import { auth, googleProvider } from "../config/firebase";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function loginUser(auth, email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // User successfully signed in
+        const user = userCredential.user;
+        // Handle successful login (e.g., redirect to a different page)
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Please enter correct email / password")
+      });
+  }
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -31,6 +58,8 @@ function Login() {
   function handleClick() {
     setLoading(!loading);
     setTimeout(() => setLoading(false), 3000);
+    if (!email || !password) return; 
+    loginUser(auth, email, password);
   }
 
   return (
@@ -46,7 +75,7 @@ function Login() {
       <img
         src="/src/assets/3d-modeling128.png"
         alt="logo"
-        style={{ marginTop:"4em", height: "96px", width: "96px" }}
+        style={{ marginTop: "4em", height: "96px", width: "96px" }}
       />
       <span
         style={{
@@ -113,6 +142,7 @@ function Login() {
                       label="Email ID"
                       variant="filled"
                       sx={{ width: "77%" }}
+                      onChange={(e)=> setEmail(e.target.value)}
                     />
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "flex-end" }}>
@@ -127,7 +157,7 @@ function Login() {
                         id="filled-adornment-password"
                         type={showPassword ? "text" : "password"}
                         endAdornment={
-                          <InputAdornment position="end">
+                          <InputAdornment position="end" >
                             <IconButton
                               aria-label="toggle password visibility"
                               onClick={handleClickShowPassword}
@@ -142,6 +172,7 @@ function Login() {
                             </IconButton>
                           </InputAdornment>
                         }
+                        onChange={(e)=> setPassword(e.target.value)}
                       />
                     </FormControl>
                   </Box>
@@ -162,7 +193,12 @@ function Login() {
                         loadingPosition="end"
                         // loadingIndicator="Loading…"
                         variant="outlined"
-                        sx={{color:"black", borderColor:"black", borderWidth:"1.5px", fontWeight:"bolder"}}
+                        sx={{
+                          color: "black",
+                          borderColor: "black",
+                          borderWidth: "1.5px",
+                          fontWeight: "bolder",
+                        }}
                       >
                         <span>Login</span>
                       </LoadingButton>

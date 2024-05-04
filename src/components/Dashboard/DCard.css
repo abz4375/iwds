@@ -1,7 +1,7 @@
 .DCard{
     width: 91.5vw ;
     margin: 1em;
-    border: 3px solid rgba(0, 0, 0, 0.622);
+    /* border: 3px solid rgba(0, 0, 0, 0.622); */
     border-radius: 5px;
     background: rgba( 255, 255, 255, 1 );
     box-shadow: 0 0px 3px 0 rgba( 31, 38, 135, 0.2 );

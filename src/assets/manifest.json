@@ -1,7 +1,7 @@
 {
     "name": "Integrated Wireless Detection System",
     "short_name": "IWDS",
-    "start_url": "/",
+    "start_url": "/login",
     "scope" : "/",
     "display": "standalone",
     "theme_color": "#000000",

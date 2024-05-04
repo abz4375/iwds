@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthTutorial from "./components/AuthTutorial";
 import MoviesCRUD from "./components/MoviesCRUD";
+import Testpage from "./components/Testpage";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Dashboard/> } />
           <Route path="/login" element={ <Login/> } />
+          <Route path="/test" element={ <Testpage/> } />
         </Routes>
       </Router>
     </div>
