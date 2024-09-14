@@ -1,12 +1,13 @@
-Got it! Here's the updated README for your project:
+Sure, here's the updated README for your project, incorporating the provided context:
 
 ---
 
 # 🌐 IWDS - Integrated Wireless Detection System
 
-Welcome to IWDS, an Integrated Wireless Detection System built with React and Vite! This project aims to provide a seamless and interactive experience for users to manage their data and navigate through various functionalities with ease. 🚀
+Welcome to IWDS, an Integrated Wireless Detection System developed as part of the 2024 Engineering & Design Project at IIITDM Jabalpur! This project aims to provide a mobile and integrated approach to environmental monitoring, overcoming the limitations of traditional stationary systems. 🚀
 
 ## 📋 Table of Contents
+- [Project Overview](#project-overview)
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
@@ -14,11 +15,26 @@ Welcome to IWDS, an Integrated Wireless Detection System built with React and Vi
 - [Contributing](#contributing)
 - [License](#license)
 
+## 📖 Project Overview
+
+### Problem Statement
+Recent industrial incidents, such as the Vishakhapatnam Gas Leak (2020) and the Ennore Ammonia Gas Leak (2022), highlight the limitations of traditional monitoring systems. These systems are often stationary, costly, and lack real-time data capabilities, making them inadequate for widespread and effective environmental monitoring.
+
+### Need for a Mobile & Integrated Approach
+- **Immobility of Traditional Systems**: Limited coverage and high costs.
+- **Need for Real-time Data**: Lack of widespread deployment and data accessibility.
+- **User-friendly Tools**: Essential for citizen science initiatives and broader applications.
+
+### IWDS as a Solution
+- **Mobile Platform**: Equipped with various sensors to collect environmental data.
+- **Real-time Alerts**: Generates alerts based on air quality levels.
+- **User-friendly Web App**: Provides real-time data access.
+
 ## ✨ Features
-- **Real-time Data Management**: Update and manage your data in real-time.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
-- **Smooth Navigation**: Easy and intuitive navigation through different sections.
-- **Customizable Components**: Tailor the dashboard to your needs with customizable components.
+- **Mobility and Wider Coverage**: Enables data collection across diverse locations.
+- **Multi-parameter Sensing**: Measures various environmental parameters.
+- **Real-time Data Visualization**: Access data through a user-friendly mobile web app.
+- **Diverse Applications**: Suitable for personal monitoring, awareness campaigns, and research.
 
 ## 🚀 Getting Started
 
@@ -133,5 +149,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Feel free to reach out if you have any questions or suggestions! Happy coding! 💻✨
 
 ---
-
-This README provides a comprehensive overview of your project, explaining its purpose, setup, structure, and usage. The use of emojis adds a friendly and engaging touch to the document.
