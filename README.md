@@ -1,7 +1,3 @@
-Sure, here's the updated README for your project, incorporating the provided context:
-
----
-
 # 🌐 IWDS - Integrated Wireless Detection System
 
 Welcome to IWDS, an Integrated Wireless Detection System developed as part of the 2024 Engineering & Design Project at IIITDM Jabalpur! This project aims to provide a mobile and integrated approach to environmental monitoring, overcoming the limitations of traditional stationary systems. 🚀
@@ -143,9 +139,3 @@ We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING
 
 ## 📄 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to reach out if you have any questions or suggestions! Happy coding! 💻✨
-
----
